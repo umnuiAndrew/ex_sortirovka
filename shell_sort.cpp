@@ -1,41 +1,19 @@
-#pragma once
-
 #include <iostream>
-#include "swap.cpp"
+#include <vector>
 using namespace std;
 
-void shellSort(int arr[], int n)
+void ShellSort(vector<int> &arr)
 {
-    for (int gap = n/2; gap > 0; gap -= 1)
+    int n = arr.size();
+    for (int gap = n / 2; gap > 0; gap /= 2)
     {
-        for (int i=gap; i<n; i++)
+        for (int i = gap; i < n; i++)
         {
-            if (arr[i] < arr[i-gap])
+            // this following loop is for move current element to right place in left direction with step equals to gap
+            for (int j = i; j >= gap && arr[j - gap] > arr[j]; j -= gap)
             {
-                swap(arr[i], arr[i-gap]);
+                swap(arr[j], arr[j-gap]);
             }
         }
     }
-}
- 
-void printArray(int arr[], int n)
-{
-    for (int i=0; i<n; i++)
-        cout << arr[i] << " ";
-}
- 
-int main()
-{
-    int arr[] = {7, 6, 8, 9, 3, 2, 10, 5, 1}, i;
-    int n = sizeof(arr)/sizeof(arr[0]);
- 
-    cout << "Array before sorting: \n";
-    printArray(arr, n);
- 
-    shellSort(arr, n);
- 
-    cout << "\nArray after sorting: \n";
-    printArray(arr, n);
- 
-    return 0;
 }
