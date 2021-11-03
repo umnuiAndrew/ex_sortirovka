@@ -2,23 +2,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> generate_vector(int n)
+vector<unsigned int> generate_vector(unsigned int n)
 {
-    vector<int> vect(n);
+    vector<unsigned int> vect(n);
     vect.clear();
     srand(time(NULL));
-    for (int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++)
     {
-        int a;
+        unsigned int a;
         a = (rand() % 10001) + 1;
         vect.push_back(a);
     }
     return vect;
 }
 
-void print_vector(vector<int> vect)
+void print_vector(vector<unsigned int> vect)
 {
-    for (int x : vect)
+    for (unsigned int x : vect)
     {
         cout << x << "| ";
     }

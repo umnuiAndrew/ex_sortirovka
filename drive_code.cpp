@@ -6,6 +6,7 @@
 #include "searching.cpp"
 #include "quick_sort.cpp"
 #include "shell_sort.cpp"
+#include "merge_sort.cpp"
 using namespace std;
 using namespace std::chrono;
 
@@ -25,9 +26,9 @@ int main()
     // running_time_searching(linear_search, 10000);
     // running_time_searching(binary_search, 10000);
 
-    vector<int> arr = generate_vector(10);
+    vector<unsigned int> arr = generate_vector(10);
     print_vector(arr);
-    ShellSort(arr);
+    mergeSort(arr);
     print_vector(arr);
     return 0;
 }
