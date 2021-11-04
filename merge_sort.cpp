@@ -3,58 +3,54 @@
 #include <vector>
 using namespace std;
 
-void merge(vector<unsigned int> &arr, vector<unsigned int> &temp, unsigned int leftStart, unsigned int rightEnd)
+void mergeSort(vector<int> &left, vector<int> &right, vector<int> &bars)
 {
-    unsigned int leftEnd = (leftStart + rightEnd) / 2;
-    unsigned int rightStart = leftEnd + 1;
-    unsigned int left = leftStart;
-    unsigned int right = rightStart;
-    while (left <= leftEnd && right <= rightEnd)
+    int nL = left.size();
+    int nR = right.size();
+    int i = 0, j = 0, k = 0;
+
+    while (j < nL && k < nR)
     {
-        if (arr[left] <= arr[right])
+        if (left[j] < right[k])
         {
-            temp.push_back(arr[left]);
-            left++;
+            bars[i] = left[j];
+            j++;
         }
         else
         {
-            temp.push_back(arr[right]);
-            right++;
+            bars[i] = right[k];
+            k++;
         }
+        i++;
     }
-    while (left <= leftEnd)
+    while (j < nL)
     {
-        temp.push_back(arr[left]);
-        left++;
+        bars[i] = left[j];
+        j++;
+        i++;
     }
-    while (right <= rightEnd)
+    while (k < nR)
     {
-        temp.push_back(arr[right]);
-        right++;
-    }
-    // copy temp to initial arr
-    arr.clear();
-    for (unsigned int x : temp)
-    {
-        arr.push_back(x);
+        bars[i] = right[k];
+        k++;
+        i++;
     }
 }
-
-void mergeSortFunc(vector<unsigned int> &arr, vector<unsigned int> &temp, unsigned int leftStart, unsigned int rightEnd)
+void sort(vector<int> &bar)
 {
-    if (leftStart >= rightEnd)
-    {
+    if (bar.size() <= 1)
         return;
-    }
-    unsigned int mid;
-    mid = (leftStart + rightEnd) / 2;
-    mergeSortFunc(arr, temp, leftStart, mid);
-    mergeSortFunc(arr, temp, mid + 1, rightEnd);
-    merge(arr, temp, leftStart, rightEnd);
-}
 
-void mergeSort(vector<unsigned int> &arr)
-{
-    vector<unsigned int> temp;
-    mergeSortFunc(arr, temp, 0, arr.size() - 1);
+    int mid = bar.size() / 2;
+    vector<int> left;
+    vector<int> right;
+
+    for (size_t j = 0; j < mid; j++)
+        left.push_back(bar[j]);
+    for (size_t j = 0; j < (bar.size()) - mid; j++)
+        right.push_back(bar[mid + j]);
+
+    sort(left);
+    sort(right);
+    mergeSort(left, right, bar);
 }

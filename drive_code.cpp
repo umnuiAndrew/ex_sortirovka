@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 #include "generator.cpp"
 #include "selection_sort.cpp"
-#include "running_time.cpp"
+//#include "running_time.cpp"
 #include "searching.cpp"
 #include "quick_sort.cpp"
 #include "shell_sort.cpp"
@@ -26,9 +26,17 @@ int main()
     // running_time_searching(linear_search, 10000);
     // running_time_searching(binary_search, 10000);
 
-    vector<unsigned int> arr = generate_vector(10);
+    vector<int> arr;
+    arr.push_back(17);
+    arr.push_back(9);
+    arr.push_back(11);
+    arr.push_back(7);
+    arr.push_back(15);
+    arr.push_back(8);
     print_vector(arr);
-    mergeSort(arr);
+    sort(arr);
+    cout << endl
+         << "after" << endl;
     print_vector(arr);
     return 0;
 }

@@ -16,9 +16,9 @@ vector<unsigned int> generate_vector(unsigned int n)
     return vect;
 }
 
-void print_vector(vector<unsigned int> vect)
+void print_vector(vector< int> vect)
 {
-    for (unsigned int x : vect)
+    for ( int x : vect)
     {
         cout << x << "| ";
     }
